@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+<style>
+ body{
+ 
+  font-family:cursive;
+  background-image:url("http://drive.google.com/uc?export=view&id=1vpRryYGKFyFbvZKNWT4LNAGqMz43VrHE");
+}
+  .countdown-container {
+ 
+  
+  padding: 24px;
+  color:yellow;
+ 
+  width: 500px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 22px -8px rgba(82, 219, 89, 0.6);
+}
+
+.countdown-container .countdown-heading {
+  text-align: center;
+  color:red;
+  font-size: 32px;
+
+  text-shadow: 1px 1px rgb(177, 241, 172);
+  margin: 8px 0;
+}
+
+.countdown-container .countdown-details {
+  text-align: center;
+}
+#logo{
+  background: yellow;
+  border-radius: 20px;
+}
+.timer {
+  background: #1d3357;
+  color: #f1faee;
+  padding: 16px;
+  display: flex;
+  opacity:0.8;
+  justify-content: space-between;
+  text-align: right;
+  border-radius: 10px;
+}
+
+.timer .number {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+.timer .unit {
+  color: #a8dadc;
+}
+
+.countdown-btn {
+  
+  text-decoration: none;
+  padding: 16px 32px;
+  display: block;
+  opacity:0.8;
+  margin: 32px -24px -24px -24px;
+  color:rgb(215, 233, 112);
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 500ms;
+}
+.countdown-btn1{
+  
+  background: yellow;
+  padding: 16px 32px;
+  display: block;
+  opacity:0.8;
+  margin: 32px -24px -24px -24px;
+  color:red;
+  border-radius: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 500ms;
+}
+
+.countdown-btn:hover {
+ font-size:40px;
+ color:red;
+ text-shadow: 1px 1px rgb(177, 241, 172);
+}
+</style>
+  </head>
+  <body>
+    <div class="page1">
+  
+    <div class="countdown-container">
+     
+     
+      <img  id="logo" src="http://drive.google.com/uc?export=view&id=1Ft3-iRnakbnS5LON6zDH3_7RRqvDBxk0">
+      <h2 class="countdown-heading">CALL FOR ICDEC 2023 PAPER SUBMISSION DEADLINE 31 AUGUST,2023</h2>
+      <p class="countdown-details">Time Left</p>
+
+      <div class="timer">
+        <div class="days">
+          <div class="number">
+            00
+          </div>
+          <div class="unit">
+            Days
+          </div>
+        </div>
+
+        <div class="hours">
+          <div class="number">
+            00
+          </div>
+          <div class="unit">
+            Hours
+          </div>
+        </div>
+
+        <div class="minutes">
+          <div class="number">
+            00
+          </div>
+          <div class="unit">
+            Minutes
+          </div>
+        </div>
+
+        <div class="seconds">
+          <div class="number">
+            00
+          </div>
+          <div class="unit">
+            Seconds
+          </div>
+        </div>
+      </div>
+
+      <a href="https://www.vlsid.org" class="countdown-btn">SUBMIT NOW</a>
+      <a href="https://www.vlsid.org" class="countdown-btn1">www.vlsid.org</a>
+    </div>
+    </div>
+<script>
+const dayDisplay = document.querySelector(".days .number");
+const hourDisplay = document.querySelector(".hours .number");
+const minuteDisplay = document.querySelector(".minutes .number");
+const secondDisplay = document.querySelector(".seconds .number");
+
+const countdownContainer = document.querySelector(".countdown-container");
+
+const endDate = new Date("August 31 2023 13:00:00");
+let saleEnded = false;
+
+const updateTimer = () => {
+  let currentDate = new Date();
+  let difference = endDate.getTime() - currentDate.getTime();
+
+  if (difference <= 1000) {
+    saleEnded = true;
+  }
+
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  let newDay = Math.floor(difference / day);
+  let newHour = Math.floor((difference % day) / hour);
+  let newMiute = Math.floor((difference % hour) / minute);
+  let newSecond = Math.floor((difference % minute) / second);
+
+  dayDisplay.innerText = newDay < 10 ? "0" + newDay : newDay;
+  hourDisplay.innerText = newHour < 10 ? "0" + newHour : newHour;
+  minuteDisplay.innerText = newMiute < 10 ? "0" + newMiute : newMiute;
+  secondDisplay.innerText = newSecond < 10 ? "0" + newSecond : newSecond;
+};
+
+setInterval(() => {
+  if (!saleEnded) {
+    updateTimer();
+  } else {
+    countdownContainer.style.display = "none";
+  }
+}, 1000);
+</script>
+  </body>
+</html>
